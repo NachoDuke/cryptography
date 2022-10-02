@@ -96,3 +96,30 @@ int* sieve(int num){
         return primes;
     }
 }
+
+int getPrime(int lowerBound,int upperBound){
+    int* primes=getPrimes(lowerBound,upperBound);
+    int index=0;
+    srand(time(0));
+    while(primes[index]!=-1){
+        index++;
+    }
+    int i=rand()%index;
+    return primes[i];
+}
+
+
+int gcd(int a, int b){
+    int temp;
+    while(true){
+        temp=a%b;
+        if(temp==0){
+            break;
+        }
+        else{
+            a=b;
+            b=temp;
+        }
+    }
+    return b;
+}
