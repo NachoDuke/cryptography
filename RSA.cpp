@@ -41,7 +41,10 @@ int RSAkey(){
 
     int k=2;        //a constant
     double decrypt=(1+phi*k)/a;
-    long long int key=pow(encryptedKey,decrypt);
-    key=fmod(key,n);
+    long long int key=1;
+    for(int i=0;i<decrypt;i++){
+        key=key*encryptedKey;
+        key=fmod(key,n);
+    }
     cout<<key;
 }
