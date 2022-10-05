@@ -3,6 +3,7 @@ import random
 
 
 def gcd(a,b):
+    #This function returns the gcd of the two numbers entered as parameters
     while True:
         temp=a%b
         if(temp==0):
@@ -13,6 +14,7 @@ def gcd(a,b):
     return b
 
 def sieve(n):
+    #Implements the sieve of Eratosthenes to obtain a list of primes less than n
     if(n<2):
         return []
     else:
@@ -37,6 +39,7 @@ def sieve(n):
         return primes
 
 def getPrimes(lower,upper):
+    #Gets a list of primes between the lower and upper bounds (parameters)
     if(lower>upper):
         return []
     if(upper<2):
@@ -63,12 +66,14 @@ def getPrimes(lower,upper):
     return primes
 
 def getPrime(lower,upper):
+    #Returns a random prime number in the given interval
     primes=getPrimes(lower,upper)
     index=random.randint(0,len(primes)-1)
     return primes[index]
 
 
 def generator(g,p):
+    #checks if g is a generator of p
     if(g>=p):
         return False
     l=[]
@@ -80,6 +85,7 @@ def generator(g,p):
     return True
 
 def modPower(g,a,p):
+    #a function to obtain (g^a) mod p
     res=1
     for i in range(a):
         res=res*g

@@ -2,12 +2,14 @@ from src.MillerRabin import *
 from src.generatePrime import *
 
 def RSAkey():
-    print("Choosing 2 random 5 digit primes")
-    p=getPrime(100,1000)
-    q=getPrime(100,1000)
+    #first party choosing 2 primes
+    print("Choosing 2 random 4 digit primes")
+    p=getPrime(1000,10000)
+    q=getPrime(1000,10000)
 
     n=p*q
 
+    #calculating carmichael's totient function
     ln=(p-1)*(q-1)
     ln=int(ln/gcd(p-1,q-1))
 
@@ -19,6 +21,7 @@ def RSAkey():
         if((e*i)%ln==1):
             d=i
 
+    #Printing the information shared on the public channel
     print("The first party publicly shares n: ",n)
     print("The first party publicly shares e: ",e)
 
@@ -27,6 +30,7 @@ def RSAkey():
         if(m<n and m>0):
             break
 
+    #encrypting the message given by the second party
     c=modPower(m,e,n)
 
     print("The second party publicly shares the encrypted message: ",c)
@@ -35,8 +39,10 @@ def RSAkey():
     originalMessage=modPower(c,d,n)
 
     if(m==originalMessage):
+        #Success
         print("Success!!")
     else:
+        #Failure
         print("Something went wrong!")
 
 
